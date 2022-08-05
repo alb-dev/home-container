@@ -26,9 +26,6 @@ MINIO_DATA_DIR:
 # -- Minio Data Directory
 minio_data_dir: /tycho/Minio
 
-# -- Nexus Data Directory
-nexus_data_dir: /tycho/Nexus
-
 # -- Mosquitto 
 MOSQUITTO_SERVICE_IP: 
 MOSQUITTO_PW:
