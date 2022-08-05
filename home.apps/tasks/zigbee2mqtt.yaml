@@ -1,0 +1,20 @@
+---
+- name: Create zigbee2mqtt directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/zigbee2mqtt"
+    - "{{ containers_base_dir }}/data/zigbee2mqtt/data"
+
+- block:
+    - name: Create zigbee2mqtt docker compose file
+      ansible.builtin.template:
+        src: zigbee2mqtt/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/zigbee2mqtt/docker-compose.yml"
+        mode: 0755
+    - name: Create zigbee2mqtt config
+      ansible.builtin.template:
+        src: zigbee2mqtt/configuration.yaml.j2
+        dest: "{{ containers_base_dir }}/data/zigbee2mqtt/data/configuration.yaml"
+        mode: 0755

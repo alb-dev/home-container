@@ -1,0 +1,34 @@
+#### General ####
+SECRET_PRIVATE_DOMAIN:
+
+#### Docker Installation ####
+containers_base_dir: /opt/docker_compose/
+system_base_dir: /opt/docker-system
+
+#### Netcup Settings ####
+NETCUP_CUSTOMER_NUMBER: 
+NETCUP_API_KEY: 
+NETCUP_API_PASSWORD: 
+NETCUP_SECRET_EMAIL:
+
+#### PIHOLE #####
+PIHOLE_PASSWORD: 
+PIHOLE_DNSSERVER: 
+
+#### Minio ####
+SECRET_MINIO_ROOT_USER:
+SECRET_MINIO_ROOT_PASSWORD: 
+# NFS-Mount 
+MINIO_DATA_DIR:
+
+
+
+# -- Minio Data Directory
+minio_data_dir: /tycho/Minio
+
+# -- Nexus Data Directory
+nexus_data_dir: /tycho/Nexus
+
+# -- Mosquitto 
+MOSQUITTO_SERVICE_IP: 
+MOSQUITTO_PW:

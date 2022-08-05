@@ -1,0 +1,41 @@
+advanced:
+  homeassistant_discovery_topic: homeassistant
+  homeassistant_status_topic: homeassistant/status
+  last_seen: ISO_8601
+  log_level: info
+  log_output:
+    - console
+  network_key:
+    - 111
+    - 170
+    - 224
+    - 82
+    - 129
+    - 150
+    - 244
+    - 51
+    - 229
+    - 33
+    - 217
+    - 154
+    - 181
+    - 172
+    - 73
+    - 69
+  pan_id: 19013
+device_options:
+  retain: true
+experimental:
+  new_api: true
+frontend:
+  port: 8080
+homeassistant: true
+mqtt:
+  base_topic: zigbee2mqtt
+  include_device_information: true
+  password: {{ MOSQUITTO_PW }}
+  server: mqtt://{{ MOSQUITTO_SERVICE_IP }}:1883
+  user: mosquitto
+permit_join: false
+serial:
+  port: /dev/ttyACM0

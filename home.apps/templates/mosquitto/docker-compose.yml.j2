@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: always
+    volumes:
+      - mosquitto-config:/mosquitto/config
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-log:/mosquitto/log
+    ports:
+      - "1883:1883"
+      - "8883:8883"    
+    environment:
+      TZ: Europe/Berlin
+    #network_mode: host
+    networks:
+     - traefik_frontend
+
+volumes:
+  mosquitto-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "{{ containers_base_dir }}/data/mosquitto/data"
+  mosquitto-log:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "{{ containers_base_dir }}/data/mosquitto/log"
+  mosquitto-config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "{{ containers_base_dir }}/data/mosquitto/config"
+
+networks:
+  traefik_frontend:
+   external: true

@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    restart: always
+    ports:
+      # DNS Ports
+      - "53:53/tcp"
+      - "53:53/udp"
+      # DNS over HTTPs
+      #- "443:443/tcp"
+      # DNS over TLS
+      - "853:853/tcp"
+      # DNS over QUIC
+      - "784:784/udp"
+      # Dashboard
+      - "3000:3000/tcp"
+    environment:
+      TZ: ${TZ}
+    volumes:
+      - adguard-data:/opt/adguardhome/work
+      - adguard-conf:/opt/adguardhome/conf
+    networks:
+     - traefik_frontend
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vault.rule=Host(`adguard.{{ SECRET_PRIVATE_DOMAIN }}`)
+      - traefik.http.routers.vault.entrypoints=websecure
+      - traefik.http.routers.vault.tls.certresolver=letsencrypt
+      - traefik.http.services.vault.loadbalancer.server.port=3000
+
+volumes:
+  adguard-conf:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "{{ containers_base_dir }}/data/adguard/conf"
+  adguard-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "{{ containers_base_dir }}/data/adguard/data"
+
+networks:
+  traefik_frontend:
+   external: true

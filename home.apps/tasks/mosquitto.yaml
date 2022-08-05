@@ -1,0 +1,28 @@
+
+---
+- name: Create mosquitto directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/mosquitto"
+    - "{{ containers_base_dir }}/data/mosquitto/data"
+    - "{{ containers_base_dir }}/data/mosquitto/config"
+    - "{{ containers_base_dir }}/data/mosquitto/log"
+
+- block:
+    - name: Create mosquitto docker compose file
+      ansible.builtin.template:
+        src: mosquitto/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/mosquitto/docker-compose.yml"
+        mode: 0755
+    - name: Create mosquitto config
+      ansible.builtin.template:
+        src: mosquitto/mosquitto.conf.j2
+        dest: "{{ containers_base_dir }}/data/mosquitto/config/mosquitto.conf"
+        mode: 0755
+    - name: Create mosquitto passwd
+      ansible.builtin.template:
+        src: mosquitto/mosquitto.passwd.j2
+        dest: "{{ containers_base_dir }}/data/mosquitto/config/mosquitto.passwd"
+        mode: 0755

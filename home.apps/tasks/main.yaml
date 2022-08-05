@@ -1,0 +1,36 @@
+---
+- name: Create default directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps"
+    - "{{ containers_base_dir }}/data"
+
+- name: Create frontend docker network
+  ansible.builtin.command: "{{ item }}"
+  loop:
+    - "docker network create traefik_frontend"
+  ignore_errors: true 
+  
+- import_tasks: traefik.yaml
+  tags:
+    - traefik
+- import_tasks: minio.yaml
+  tags:
+    - minio
+- import_tasks: pihole.yaml
+  tags:
+    - pihole
+- import_tasks: vault.yaml
+  tags:
+    - vault
+- import_tasks: watchtower.yaml
+  tags:
+    - watchtower
+- import_tasks: mosquitto.yaml
+  tags:
+    - mosquitto
+- import_tasks: zigbee2mqtt.yaml
+  tags:
+    - zigbee2mqtt

@@ -1,0 +1,15 @@
+---
+version: "3.8"
+services:
+  Watchtower:
+    image: containrrr/watchtower:latest
+    #    command: --schedule "0 5 * * 6"
+    #    command: --schedule "0 5 * * 6"
+    command: --interval 30
+    environment:
+      TZ: "CET"
+      WATCHTOWER_CLEANUP: "true"
+    restart: unless-stopped
+    container_name: Watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

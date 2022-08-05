@@ -1,0 +1,21 @@
+---
+- name: Create traefik directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/adguard"
+    - "{{ containers_base_dir }}/data/adguard/conf"
+    - "{{ containers_base_dir }}/data/adguard/data"
+
+- block:
+    - name: Create adguard docker compose file
+      ansible.builtin.template:
+        src: adguard/docker-compose.yml.j2
+        dest: "{{ containers_base_dir }}/apps/adguard/docker-compose.yml"
+        mode: 0755
+    - name: Create adguard docker compose file
+      ansible.builtin.template:
+        src: adguard/AdGuardHome.yaml.j2
+        dest: "{{ containers_base_dir }}/data/adguard/conf/AdGuardHome.yaml"
+        mode: 0755

@@ -1,0 +1,8 @@
+
+---
+- name: Create watchtower directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ containers_base_dir }}/apps/watchtower"

@@ -1,0 +1,49 @@
+---
+- name: Restart traefik
+  ansible.builtin.systemd:
+    name: "docker-compose@traefik.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart minio
+  ansible.builtin.systemd:
+    name: "docker-compose@minio.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart vault
+  ansible.builtin.systemd:
+    name: "docker-compose@vault.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart zigbee2mqtt
+  ansible.builtin.systemd:
+    name: "docker-compose@zigbee2mqtt.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart pihole
+  ansible.builtin.systemd:
+    name: "docker-compose@pihole.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart watchtower
+  ansible.builtin.systemd:
+    name: "docker-compose@watchtower.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
+
+- name: Restart mosquitto
+  ansible.builtin.systemd:
+    name: "docker-compose@mosquitto.service"
+    state: restarted
+    enabled: true
+    daemon_reload: true
