@@ -1,2 +1,2 @@
 [homeserver]
-HOMESERVER-01.intern.breidenbach.koeln ansible_host=192.168.178.10
+hestia.intern.breidenbach.koeln ansible_host=192.168.178.3

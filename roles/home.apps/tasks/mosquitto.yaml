@@ -26,3 +26,9 @@
         src: mosquitto/mosquitto.passwd.j2
         dest: "{{ containers_base_dir }}/data/mosquitto/config/mosquitto.passwd"
         mode: 0755
+    - name: Create mosquitto systemd service file
+      ansible.builtin.template:
+        src: "docker-compose@.service.j2"
+        dest: "/etc/systemd/system/docker-compose@mosquitto.service"
+        mode: 0644
+  notify: Restart mosquitto

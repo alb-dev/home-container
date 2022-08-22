@@ -12,19 +12,22 @@
   loop:
     - "docker network create traefik_frontend"
   ignore_errors: true 
-  
+
+- import_tasks: docker.yaml
+  tags:
+    - docker
 - import_tasks: traefik.yaml
   tags:
     - traefik
 - import_tasks: minio.yaml
   tags:
     - minio
-- import_tasks: pihole.yaml
-  tags:
-    - pihole
-- import_tasks: vault.yaml
-  tags:
-    - vault
+#- import_tasks: pihole.yaml
+#  tags:
+#    - pihole
+#- import_tasks: vault.yaml
+#  tags:
+#    - vault
 - import_tasks: watchtower.yaml
   tags:
     - watchtower
@@ -34,3 +37,6 @@
 - import_tasks: zigbee2mqtt.yaml
   tags:
     - zigbee2mqtt
+- import_tasks: adguard.yaml
+  tags:
+    - adguard
