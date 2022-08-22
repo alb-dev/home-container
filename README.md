@@ -11,7 +11,7 @@ Docker Apps for Home
 
 ## Role Variables
 
-This is a copy of `roles/home.apps/defaults/main.yml`
+This is a copy of `roles/home.apps/defaults/main.yaml`
 
 ```yaml
 ---
