@@ -1,5 +1,5 @@
 ---
-- name: Homeserver Deployment
+- name: Homeserver Container App Deployment
   hosts: all
   become: true
   gather_facts: true
