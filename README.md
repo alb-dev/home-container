@@ -1,7 +1,22 @@
 # home-container
 Docker Apps for Home
 
-# Install requirements
+## Requirements
+
+* Ansible 2.10+
+
+## Tested on
+
+* Fedora Server 36
+
+## Role Variables
+
+This is a copy of `roles/home.apps/defaults/main.yml`
+
+```yaml
+---
+
+## Install requirements
 ```
 ansible-galaxy install -r roles/requirements.yml
 ```
