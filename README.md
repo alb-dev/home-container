@@ -11,6 +11,8 @@ ansible-galaxy install -r roles/requirements.yml
 Applications can be installed with targeting via tag 
 
 ### Example
+This will install only zigbee2mqtt. If no tag is defined all apps will be installed.
+Following will only install one app.
 ```
-ansible-playbook -i inventory/homeserver.yml playbooks/main.yaml -u your user
+ansible-playbook -i inventory/homeserver.yml playbooks/main.yaml -u your user --tag "zigbee2mqtt"
 ```
