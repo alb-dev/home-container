@@ -31,10 +31,10 @@ dns:
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
-  - {{ upstream_dns }}
+  - {{ UPSTREAM_DNS }}
   upstream_dns_file: ""
   bootstrap_dns:
-  - {{ upstream_dns }}
+  - {{ UPSTREAM_DNS }}
   all_servers: false
   fastest_addr: false
   fastest_timeout: 1s

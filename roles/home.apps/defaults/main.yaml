@@ -1,6 +1,6 @@
 #### General ####
 SECRET_PRIVATE_DOMAIN: 
-upstream_dns: 
+UPSTREAM_DNS: 
 #### Docker Installation ####
 containers_base_dir: /opt/docker_compose
 system_base_dir: /opt/docker-system
